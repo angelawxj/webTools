@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -57,6 +58,15 @@ export default {
         amount3: 15
       }]
     }
+  },
+  created () {
+    axios.get('http://127.0.0.1:8000/api/v1/')
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   },
   methods: {
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
