@@ -2,17 +2,19 @@
   <div class="financeReport">
     <div class="tableWrap">
       <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
-        <el-table-column prop="date" label="资产" width="150" align="center">
-          <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-          <el-table-column prop="name" label="收入平台" width="120"></el-table-column>
-          <el-table-column prop="name" label="实收金额" width="120"></el-table-column>
-          <el-table-column prop="name" label="实收日期" width="120"></el-table-column>
-        </el-table-column>
-        <el-table-column label="负债" align="center">
-          <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-          <el-table-column prop="name" label="负债平台" width="120"></el-table-column>
-          <el-table-column prop="name" label="还款日期" width="120"></el-table-column>
-          <el-table-column prop="name" label="还款状态" width="120"></el-table-column>
+        <el-table-column prop="date" label="2019-6" width="150" align="center">
+          <el-table-column prop="date" label="资产" width="150" align="center">
+            <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+            <el-table-column prop="name" label="收入平台" width="120"></el-table-column>
+            <el-table-column prop="name" label="实收金额" width="120"></el-table-column>
+            <el-table-column prop="name" label="实收日期" width="120"></el-table-column>
+          </el-table-column>
+          <el-table-column label="负债" align="center">
+            <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+            <el-table-column prop="name" label="负债平台" width="120"></el-table-column>
+            <el-table-column prop="name" label="还款日期" width="120"></el-table-column>
+            <el-table-column prop="name" label="还款状态" width="120"></el-table-column>
+          </el-table-column>
         </el-table-column>
       </el-table>
     </div>
