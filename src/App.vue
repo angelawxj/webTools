@@ -18,9 +18,10 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-html,body{
+html,
+body {
   height: 100%;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 </style>

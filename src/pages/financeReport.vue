@@ -1,37 +1,9 @@
 <template>
   <div class="gdgg_xjbb_page">
-    <div class="gdgg_xjbb_rainbowBG"></div>
     <div class="gdgg_xjbb_page-margin">
       <el-row type="flex" :gutter="80">
         <el-col :span="4">
-          <a @click="$router.push('financeReport')">
-            <img src="../assets/images/report.png" alt class="gdgg_xjbb_modular">
-            <span class="gdgg_xjbb_label">财务报表</span>
-          </a>
-        </el-col>
-        <el-col :span="4">
-          <a>
-            <img src="../assets/images/business-and-finance.png" alt class="gdgg_xjbb_modular">
-            <span class="gdgg_xjbb_label">现金流机器</span>
-          </a>
-        </el-col>
-        <el-col :span="4">
-          <a>
-            <img src="../assets/images/Interview.png" alt class="gdgg_xjbb_modular">
-            <span class="gdgg_xjbb_label">面试刷题</span>
-          </a>
-        </el-col>
-        <el-col :span="4">
-          <a>
-            <img src="../assets/images/skill.png" alt class="gdgg_xjbb_modular">
-            <span class="gdgg_xjbb_label">技能树</span>
-          </a>
-        </el-col>
-        <el-col :span="4">
-          <a>
-            <img src="../assets/images/library.png" alt class="gdgg_xjbb_modular">
-            <span class="gdgg_xjbb_label">图书馆</span>
-          </a>
+          <span class="gdgg_xjbb_label">财务报表</span>
         </el-col>
       </el-row>
     </div>
