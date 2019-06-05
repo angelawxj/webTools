@@ -1,11 +1,20 @@
 <template>
-  <div class="gdgg_xjbb_page">
-    <div class="gdgg_xjbb_page-margin">
-      <el-row type="flex" :gutter="80">
-        <el-col :span="4">
-          <span class="gdgg_xjbb_label">财务报表</span>
-        </el-col>
-      </el-row>
+  <div class="financeReport">
+    <div class="tableWrap">
+      <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
+        <el-table-column prop="date" label="资产" width="150" align="center">
+          <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+          <el-table-column prop="name" label="收入平台" width="120"></el-table-column>
+          <el-table-column prop="name" label="实收金额" width="120"></el-table-column>
+          <el-table-column prop="name" label="实收日期" width="120"></el-table-column>
+        </el-table-column>
+        <el-table-column label="负债" align="center">
+          <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+          <el-table-column prop="name" label="负债平台" width="120"></el-table-column>
+          <el-table-column prop="name" label="还款日期" width="120"></el-table-column>
+          <el-table-column prop="name" label="还款状态" width="120"></el-table-column>
+        </el-table-column>
+      </el-table>
     </div>
   </div>
 </template>
@@ -14,7 +23,54 @@
 export default {
   data () {
     return {
-
+      tableData: [{
+        id: '12987122',
+        name: '汪小娟',
+        amount1: '234',
+        amount2: '3.2',
+        amount3: 10
+      }, {
+        id: '12987123',
+        name: '王小虎',
+        amount1: '165',
+        amount2: '4.43',
+        amount3: 12
+      }, {
+        id: '12987124',
+        name: '王小虎',
+        amount1: '324',
+        amount2: '1.9',
+        amount3: 9
+      }, {
+        id: '12987125',
+        name: '王小虎',
+        amount1: '621',
+        amount2: '2.2',
+        amount3: 17
+      }, {
+        id: '12987126',
+        name: '王小虎',
+        amount1: '539',
+        amount2: '4.1',
+        amount3: 15
+      }]
+    }
+  },
+  methods: {
+    objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 0) {
+        if (rowIndex % 2 === 0) {
+          return {
+            rowspan: 2,
+            colspan: 1
+          }
+        } else {
+          return {
+            rowspan: 0,
+            colspan: 0
+          }
+        }
+      }
     }
   }
 }
@@ -22,46 +78,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.gdgg_xjbb_page {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.gdgg_xjbb_rainbowBG {
-  position: absolute;
-  background: #e8a36c;
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-}
-.gdgg_xjbb_rainbowBG::after {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 200%;
-  height: 60px;
-  bottom: 300px;
-  margin-left: -50%;
-  transform: rotate(-20deg);
-  box-shadow: 0 60px 0 #f7c44f, 0 120px 0 #fc9047, 0 180px 0 #ea4e52,
-    0 240px 0 #902fb0, 0 300px 0 #008cfb;
-  background: #57bc56;
-  z-index: 0;
-}
-.gdgg_xjbb_page-margin {
-  width: 70%;
-  min-width: 800px;
-  margin: auto;
-  padding: 20px 30px;
-}
-.gdgg_xjbb_modular {
-  height: 90px;
-  border-radius: 4px;
-}
-.gdgg_xjbb_label {
-  display: block;
-  text-align: center;
-  line-height: 4;
-  color: #fff;
+.tableWrap {
+  width: 1200px;
+  padding: 50px;
 }
 </style>
