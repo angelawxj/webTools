@@ -3,6 +3,6 @@
  */
 import { get } from '@/utils/request/'
 // 获取财务报表信息
-export const getFinanceReport = function () {
-  return get('/api/v1/')
+export const getFinanceReport = function (date) {
+  return get('/api/v1/?month=' + date)
 }

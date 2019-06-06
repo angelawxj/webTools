@@ -1,5 +1,5 @@
 <template>
-  <div class="gdgg_xjbb_page">
+  <div class="home_page wh-100">
     <div class="gdgg_xjbb_rainbowBG primary-bg"></div>
     <div class="gdgg_xjbb_page-margin">
       <el-row type="flex" :gutter="80">
@@ -60,11 +60,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.gdgg_xjbb_page {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
 .gdgg_xjbb_rainbowBG {
   position: absolute;
   height: 100%;
