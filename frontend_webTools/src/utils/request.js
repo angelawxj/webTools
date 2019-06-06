@@ -23,7 +23,7 @@ axios.interceptors.request.use(
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
-    return response.data
+    return response
   },
   error => {
     Message({

@@ -5,15 +5,16 @@
         <el-table-column prop="date" label="2019-6" width="150" align="center">
           <el-table-column prop="date" label="资产" width="150" align="center">
             <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-            <el-table-column prop="name" label="收入平台" width="120"></el-table-column>
-            <el-table-column prop="name" label="实收金额" width="120"></el-table-column>
-            <el-table-column prop="name" label="实收日期" width="120"></el-table-column>
+            <el-table-column prop="incomeChannel" label="收入平台" width="120"></el-table-column>
+            <el-table-column prop="incomeAmount" label="实收金额" width="120"></el-table-column>
+            <el-table-column prop="incomeDate" label="实收日期" width="120"></el-table-column>
           </el-table-column>
           <el-table-column label="负债" align="center">
             <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-            <el-table-column prop="name" label="负债平台" width="120"></el-table-column>
-            <el-table-column prop="name" label="还款日期" width="120"></el-table-column>
-            <el-table-column prop="name" label="还款状态" width="120"></el-table-column>
+            <el-table-column prop="debtChannel" label="负债平台" width="120"></el-table-column>
+            <el-table-column prop="debtAmount" label="还款金额" width="120"></el-table-column>
+            <el-table-column prop="repayDate" label="还款日期" width="120"></el-table-column>
+            <el-table-column prop="isRepay ? '是' : '否'" label="还款状态" width="120"></el-table-column>
           </el-table-column>
         </el-table-column>
       </el-table>
@@ -27,37 +28,7 @@ import { getFinanceReport } from '@/api/report'
 export default {
   data () {
     return {
-      tableData: [{
-        id: '12987122',
-        name: '汪小娟',
-        amount1: '234',
-        amount2: '3.2',
-        amount3: 10
-      }, {
-        id: '12987123',
-        name: '王小虎',
-        amount1: '165',
-        amount2: '4.43',
-        amount3: 12
-      }, {
-        id: '12987124',
-        name: '王小虎',
-        amount1: '324',
-        amount2: '1.9',
-        amount3: 9
-      }, {
-        id: '12987125',
-        name: '王小虎',
-        amount1: '621',
-        amount2: '2.2',
-        amount3: 17
-      }, {
-        id: '12987126',
-        name: '王小虎',
-        amount1: '539',
-        amount2: '4.1',
-        amount3: 15
-      }]
+      tableData: []
     }
   },
   created () {
@@ -66,6 +37,7 @@ export default {
   methods: {
     getFinanceReport () {
       getFinanceReport().then((data) => {
+        this.tableData = data
       })
     },
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
