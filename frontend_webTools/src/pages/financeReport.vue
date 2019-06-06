@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -60,7 +59,7 @@ export default {
     }
   },
   created () {
-    axios.get('http://127.0.0.1:8000/api/v1/')
+    this.$axios.get('http://127.0.0.1:8000/api/v1/')
       .then(function (response) {
         console.log(response)
       })
