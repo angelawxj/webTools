@@ -59,7 +59,7 @@ export default {
     }
   },
   created () {
-    this.$axios.get('http://127.0.0.1:8000/api/v1/')
+    this.$axios.get('http://127.0.0.1:8000/api/v13/')
       .then(function (response) {
         console.log(response)
       })
