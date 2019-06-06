@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/pages/home'
-import financeReport from '@/pages/financeReport'
+/**
+ * [lazy loading]
+ */
+const Home = () => import('@/pages/home')
+const FinanceReport = () => import('@/pages/financeReport')
 
 Vue.use(Router)
 
@@ -10,15 +13,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: Home
     },
     {
       path: '/financeReport',
       name: 'financeReport',
-      component: financeReport,
-      meta: {
-        title: '财务报表'
-      }
+      component: FinanceReport
     }
   ]
 })
