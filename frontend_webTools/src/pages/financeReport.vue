@@ -1,21 +1,23 @@
 <template>
   <div class="financeReport">
     <div class="tableWrap">
+      <div class="selectMonth">
+        <span class="demonstration">请选择月份</span>
+        <el-date-picker v-model="month" type="month" placeholder="选择月"></el-date-picker>
+      </div>
       <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
-        <el-table-column prop="date" label="2019-6" width="150" align="center">
-          <el-table-column prop="date" label="资产" width="150" align="center">
-            <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-            <el-table-column prop="incomeChannel" label="收入平台" width="120"></el-table-column>
-            <el-table-column prop="incomeAmount" label="实收金额" width="120"></el-table-column>
-            <el-table-column prop="incomeDate" label="实收日期" width="120"></el-table-column>
-          </el-table-column>
-          <el-table-column label="负债" align="center">
-            <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-            <el-table-column prop="debtChannel" label="负债平台" width="120"></el-table-column>
-            <el-table-column prop="debtAmount" label="还款金额" width="120"></el-table-column>
-            <el-table-column prop="repayDate" label="还款日期" width="120"></el-table-column>
-            <el-table-column prop="isRepay" label="还款状态" width="120"></el-table-column>
-          </el-table-column>
+        <el-table-column prop="date" label="资产" align="center">
+          <el-table-column prop="name" label="姓名"></el-table-column>
+          <el-table-column prop="incomeChannel" label="收入平台"></el-table-column>
+          <el-table-column prop="incomeAmount" label="实收金额"></el-table-column>
+          <el-table-column prop="incomeDate" label="实收日期"></el-table-column>
+        </el-table-column>
+        <el-table-column label="负债" align="center">
+          <el-table-column prop="name" label="姓名"></el-table-column>
+          <el-table-column prop="debtChannel" label="负债平台"></el-table-column>
+          <el-table-column prop="debtAmount" label="还款金额"></el-table-column>
+          <el-table-column prop="repayDate" label="还款日期"></el-table-column>
+          <el-table-column prop="isRepay" label="还款状态"></el-table-column>
         </el-table-column>
       </el-table>
     </div>
@@ -28,7 +30,8 @@ import { getFinanceReport } from '@/api/report'
 export default {
   data () {
     return {
-      tableData: []
+      tableData: [],
+      month: ''
     }
   },
   created () {
@@ -60,9 +63,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.tableWrap {
-  width: 1200px;
-  padding: 50px;
+<style lang="scss" scoped>
+.financeReport {
+  .tableWrap {
+    margin: 50px 200px 50px 200px;
+  }
+  .selectMonth {
+    padding: 30px 0;
+  }
 }
 </style>

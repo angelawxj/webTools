@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, { size: 'small' })
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
