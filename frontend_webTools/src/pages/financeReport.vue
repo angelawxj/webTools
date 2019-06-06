@@ -3,7 +3,7 @@
     <div class="tableWrap">
       <div class="selectMonth">
         <span class="demonstration">请选择月份</span>
-        <el-date-picker v-model="month" type="month" placeholder="选择月"></el-date-picker>
+        <el-date-picker v-model="month" type="month" placeholder="选择月" @change="selectData"></el-date-picker>
       </div>
       <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
         <el-table-column prop="date" label="资产" align="center">
@@ -42,6 +42,9 @@ export default {
       getFinanceReport().then((data) => {
         this.tableData = data
       })
+    },
+    selectData (val) {
+      console.log(val)
     },
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
       if (columnIndex === 0) {
