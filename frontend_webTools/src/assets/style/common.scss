@@ -1,2 +1,12 @@
+// color
+$primary: #fab7c2;
+
+html,
 body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.primary-bg {
+  background-color: $primary;
 }
