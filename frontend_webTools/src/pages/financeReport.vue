@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { getFinanceReport } from '@/api/report'
+
 export default {
   data () {
     return {
@@ -59,15 +61,13 @@ export default {
     }
   },
   created () {
-    this.$axios.get('http://127.0.0.1:8000/api/v13/')
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    this.getFinanceReport()
   },
   methods: {
+    getFinanceReport () {
+      getFinanceReport().then((data) => {
+      })
+    },
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
       if (columnIndex === 0) {
         if (rowIndex % 2 === 0) {

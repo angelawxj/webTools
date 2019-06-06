@@ -3,13 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
-import axios from '@/utils/request'
-Vue.use(Vuex)
-Vue.prototype.$axios = axios // 全局注册，使用方法为:this.$axios
+import 'element-ui/lib/theme-chalk/index.css'
+
 Vue.use(ElementUI)
+Vue.use(Vuex)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
