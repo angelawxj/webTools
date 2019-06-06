@@ -14,7 +14,7 @@
             <el-table-column prop="debtChannel" label="负债平台" width="120"></el-table-column>
             <el-table-column prop="debtAmount" label="还款金额" width="120"></el-table-column>
             <el-table-column prop="repayDate" label="还款日期" width="120"></el-table-column>
-            <el-table-column prop="isRepay ? '是' : '否'" label="还款状态" width="120"></el-table-column>
+            <el-table-column prop="isRepay" label="还款状态" width="120"></el-table-column>
           </el-table-column>
         </el-table-column>
       </el-table>
