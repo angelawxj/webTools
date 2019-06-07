@@ -1,17 +1,27 @@
 # api/views.py
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
-from todos import models
 from . import serializers
+from . import models
 
-class ListTodo(generics.ListCreateAPIView):
-    queryset = models.Todo.objects.all()
-    serializer_class = serializers.TodoSerializer
+class ListReport(generics.ListCreateAPIView):
+    queryset = models.Report.objects.all()
+    serializer_class = serializers.ReportSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('month',)
 
 
-class DetailTodo(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Todo.objects.all()
-    serializer_class = serializers.TodoSerializer
-    
+class DetailReport(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Report.objects.all()
+    serializer_class = serializers.ReportSerializer
+
+class ListInterview(generics.ListCreateAPIView):
+    queryset = models.Interview.objects.all()
+    serializer_class = serializers.InterviewSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('sort','fatherSort',)
+
+
+class DetailInterview(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Interview.objects.all()
+    serializer_class = serializers.InterviewSerializer

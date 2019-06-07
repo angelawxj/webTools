@@ -1,9 +1,9 @@
 # api/serializers.py
 from rest_framework import serializers
-from todos import models
+from . import models
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'id',
@@ -12,9 +12,23 @@ class TodoSerializer(serializers.ModelSerializer):
             'incomeChannel',
             'incomeAmount',
             'incomeDate',
+            'debtName',
             'debtChannel',
             'debtAmount',
             'repayDate',
             'isRepay'
         )
-        model = models.Todo
+        model = models.Report
+
+class InterviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'question',
+            'answer',
+            'star',
+            'ispass',
+            'sort',
+            'fatherSort',
+        )
+        model = models.Interview
