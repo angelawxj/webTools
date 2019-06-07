@@ -6,7 +6,6 @@ import router from './router'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
 import Moment from 'moment'
-
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(ElementUI, { size: 'small' })

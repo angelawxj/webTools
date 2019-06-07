@@ -1,5 +1,4 @@
 import axios from 'axios'
-import qs from 'qs'
 import { Message } from 'element-ui'
 
 // 默认配置
@@ -11,7 +10,8 @@ axios.interceptors.request.use(
   config => {
     // post 请求参数处理
     if (config.method === 'post') {
-      config.data = qs.stringify(config.data)
+      // django接口特殊不需要转化
+      config.data = config.data
     }
     return config
   },
@@ -35,6 +35,22 @@ axios.interceptors.response.use(
   }
 )
 
+// 发送请求 get 封装
+export function get (url, params) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url, {
+        params: params
+      })
+      .then(res => {
+        resolve(res.data)
+      })
+      .catch(err => {
+        reject(err.data)
+      })
+  })
+}
+
 // 发送请求 post 封装
 export function post (url, params) {
   return new Promise((resolve, reject) => {
@@ -53,11 +69,30 @@ export function post (url, params) {
       })
   })
 }
-// 发送请求 get 封装
-export function get (url, params) {
+// 发送请求 put 封装
+export function put (url, params) {
   return new Promise((resolve, reject) => {
     axios
-      .get(url, {
+      .put(url, params)
+      .then(
+        res => {
+          resolve(res.data)
+        },
+        err => {
+          reject(err.data)
+        }
+      )
+      .catch(err => {
+        reject(err.data)
+      })
+  })
+}
+
+// 发送请求 delete 封装
+export function del (url, params) {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(url, {
         params: params
       })
       .then(res => {
@@ -68,4 +103,5 @@ export function get (url, params) {
       })
   })
 }
+
 export default axios
