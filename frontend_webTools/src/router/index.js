@@ -5,6 +5,7 @@ import Router from 'vue-router'
  */
 const Home = () => import('@/pages/home')
 const FinanceReport = () => import('@/pages/financeReport')
+const Interview = () => import('@/pages/interview')
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ export default new Router({
       path: '/financeReport',
       name: 'financeReport',
       component: FinanceReport
+    },
+    {
+      path: '/interview',
+      name: 'interview',
+      component: Interview
     }
   ]
 })

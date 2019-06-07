@@ -2,60 +2,62 @@
   <div class="financeReport primary-bg wh-100">
     <div class="tableWrap">
       <div class="selectMonth">
-        <span class="demonstration">请选择月份</span>
+        <span class="table_date">请选择月份：</span>
         <el-date-picker v-model="month" type="month" placeholder="选择月" @change="selectData"></el-date-picker>
       </div>
-      <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
-        <el-table-column prop="date" label="资产" align="center">
-          <el-table-column prop="name" label="姓名">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.name" readonly="false"></el-input>
-            </template>
+      <div class="table">
+        <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
+          <el-table-column prop="date" label="资产" align="center">
+            <el-table-column prop="name" label="姓名">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.name" readonly="false"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="incomeChannel" label="收入平台">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.incomeChannel"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="incomeAmount" label="实收金额">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.incomeAmount"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="incomeDate" label="实收日期">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.incomeDate"></el-input>
+              </template>
+            </el-table-column>
           </el-table-column>
-          <el-table-column prop="incomeChannel" label="收入平台">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.incomeChannel"></el-input>
-            </template>
+          <el-table-column label="负债" align="center">
+            <el-table-column prop="name" label="姓名">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.name"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="debtChannel" label="负债平台">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.debtChannel"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="debtAmount" label="还款金额">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.debtAmount"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="repayDate" label="还款日期">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.repayDate"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="isRepay" label="还款状态">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.isRepay"></el-input>
+              </template>
+            </el-table-column>
           </el-table-column>
-          <el-table-column prop="incomeAmount" label="实收金额">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.incomeAmount"></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column prop="incomeDate" label="实收日期">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.incomeDate"></el-input>
-            </template>
-          </el-table-column>
-        </el-table-column>
-        <el-table-column label="负债" align="center">
-          <el-table-column prop="name" label="姓名">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.name"></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column prop="debtChannel" label="负债平台">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.debtChannel"></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column prop="debtAmount" label="还款金额">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.debtAmount"></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column prop="repayDate" label="还款日期">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.repayDate"></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column prop="isRepay" label="还款状态">
-            <template slot-scope="scope">
-              <el-input v-model="scope.row.isRepay"></el-input>
-            </template>
-          </el-table-column>
-        </el-table-column>
-      </el-table>
+        </el-table>
+      </div>
     </div>
   </div>
 </template>
@@ -108,16 +110,31 @@ export default {
 <style lang="scss" scoped>
 .financeReport {
   .tableWrap {
-    padding: 10px 200px 50px 200px;
+    padding: 10px 100px 50px 100px;
   }
   .selectMonth {
     padding: 30px 0;
   }
+  .table_date {
+    color: #fff;
+  }
 }
 </style>
 <style>
-.el-input__inner {
+.table .el-input__inner {
   border: none !important;
   background: none !important;
+}
+.el-table th > .cell {
+  font-weight: bold;
+  font-size: 14px;
+}
+.el-table th > .cell,
+.cell input {
+  text-align: center;
+}
+.el-table thead.is-group th {
+  background: #ef3221;
+  color: #fff;
 }
 </style>

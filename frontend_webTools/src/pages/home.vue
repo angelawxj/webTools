@@ -20,12 +20,14 @@
           </a>
         </el-col>
         <el-col :span="4">
-          <a>
-            <div class="gdgg_xjbb_modular">
-              <img class="gdgg_xjbb_icon" src="../assets/images/Interview.png" alt>
-            </div>
-            <span class="gdgg_xjbb_label">面试刷题</span>
-          </a>
+          <router-link to="/interview">
+            <a>
+              <div class="gdgg_xjbb_modular">
+                <img class="gdgg_xjbb_icon" src="../assets/images/Interview.png" alt>
+              </div>
+              <span class="gdgg_xjbb_label">面试刷题</span>
+            </a>
+          </router-link>
         </el-col>
         <el-col :span="4">
           <a>
