@@ -2,15 +2,21 @@
   <div class="financeReport primary-bg wh-100">
     <div class="tableWrap">
       <div class="selectMonth">
-        <span class="table_date">请选择月份：</span>
-        <el-date-picker v-model="month" type="month" placeholder="选择月" @change="selectData"></el-date-picker>
+        <div>
+          <span class="table_date">请选择月份：</span>
+          <el-date-picker v-model="month" type="month" placeholder="选择月" @change="selectData"></el-date-picker>
+        </div>
+        <div>
+          <el-button type="primary" @click="addData">新增数据</el-button>
+          <el-button type="primary" @click="saveData">提交</el-button>
+        </div>
       </div>
       <div class="table">
         <el-table :data="tableData" style="width: 100%" :span-method="objectSpanMethod">
           <el-table-column prop="date" label="资产" align="center">
             <el-table-column prop="name" label="姓名">
               <template slot-scope="scope">
-                <el-input v-model="scope.row.name" readonly="false"></el-input>
+                <el-input v-model="scope.row.name"></el-input>
               </template>
             </el-table-column>
             <el-table-column prop="incomeChannel" label="收入平台">
@@ -30,9 +36,9 @@
             </el-table-column>
           </el-table-column>
           <el-table-column label="负债" align="center">
-            <el-table-column prop="name" label="姓名">
+            <el-table-column prop="debtName" label="姓名">
               <template slot-scope="scope">
-                <el-input v-model="scope.row.name"></el-input>
+                <el-input v-model="scope.row.debtName"></el-input>
               </template>
             </el-table-column>
             <el-table-column prop="debtChannel" label="负债平台">
@@ -55,6 +61,14 @@
                 <el-input v-model="scope.row.isRepay"></el-input>
               </template>
             </el-table-column>
+            <el-table-column prop="isRepay" label="操作">
+              <template slot-scope="scope">
+                <div class="button">
+                  <el-button type="success" @click="modifyData(scope.row.id)">修改</el-button>
+                  <el-button type="danger" @click="deleteData((scope.row.id))">删除</el-button>
+                </div>
+              </template>
+            </el-table-column>
           </el-table-column>
         </el-table>
       </div>
@@ -63,13 +77,14 @@
 </template>
 
 <script>
-import { getFinanceReport } from '@/api/report'
+import { getFinanceReport, addFinanceReport, modifyFinanceReport, deleteFinanceReport } from '@/api/report'
 
 export default {
   data () {
     return {
       tableData: [],
-      month: ''
+      month: '',
+      list: {}
     }
   },
   created () {
@@ -86,6 +101,49 @@ export default {
     selectData (val) {
       this.month = this.Moment(val).format('YYYY-MM')
       this.getFinanceReport()
+    },
+    addData () {
+      this.list = {
+        month: '2019-6',
+        name: '',
+        incomeChannel: '',
+        incomeAmount: '',
+        incomeDate: '',
+        debtName: '',
+        debtChannel: '',
+        debtAmount: '',
+        repayDate: '',
+        isRepay: ''
+      }
+      this.tableData.unshift(this.list)
+    },
+    saveData () {
+      addFinanceReport(this.tableData[0]).then((data) => {
+        this.$message({
+          message: '恭喜你，新增成功',
+          type: 'success'
+        })
+        this.getFinanceReport()
+      })
+    },
+    modifyData (id) {
+      console.log(id)
+      modifyFinanceReport(id, this.tableData[0]).then((data) => {
+        this.$message({
+          message: '恭喜你，修改成功',
+          type: 'success'
+        })
+        this.getFinanceReport()
+      })
+    },
+    deleteData (id) {
+      deleteFinanceReport(id).then((data) => {
+        this.$message({
+          message: '恭喜你，删除成功',
+          type: 'success'
+        })
+        this.getFinanceReport()
+      })
     },
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
       // if (columnIndex === 0) {
@@ -113,10 +171,16 @@ export default {
     padding: 10px 100px 50px 100px;
   }
   .selectMonth {
+    display: flex;
+    justify-content: space-between;
     padding: 30px 0;
   }
   .table_date {
     color: #fff;
+  }
+  .button {
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>
