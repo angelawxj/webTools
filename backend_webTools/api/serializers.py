@@ -16,7 +16,9 @@ class ReportSerializer(serializers.ModelSerializer):
             'debtChannel',
             'debtAmount',
             'repayDate',
-            'isRepay'
+            'isRepay',
+            'numDebt',
+            'debtType'
         )
         model = models.Report
 

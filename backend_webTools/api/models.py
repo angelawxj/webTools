@@ -13,6 +13,8 @@ class Report(models.Model):
     debtAmount = models.TextField(default="-")
     repayDate = models.TextField(default="-")
     isRepay = models.TextField(default="-")
+    numDebt = models.TextField(default="-")
+    debtType = models.TextField(default="-")
 
     def __str__(self):
         """A string representation of the model."""

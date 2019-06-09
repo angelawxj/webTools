@@ -41,6 +41,11 @@
                 <el-input v-model="scope.row.debtName"></el-input>
               </template>
             </el-table-column>
+            <el-table-column prop="debtType" label="负债类型">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.debtType"></el-input>
+              </template>
+            </el-table-column>
             <el-table-column prop="debtChannel" label="负债平台">
               <template slot-scope="scope">
                 <el-input v-model="scope.row.debtChannel"></el-input>
@@ -49,6 +54,11 @@
             <el-table-column prop="debtAmount" label="还款金额">
               <template slot-scope="scope">
                 <el-input v-model="scope.row.debtAmount"></el-input>
+              </template>
+            </el-table-column>
+            <el-table-column prop="numDebt" label="期数">
+              <template slot-scope="scope">
+                <el-input v-model="scope.row.numDebt"></el-input>
               </template>
             </el-table-column>
             <el-table-column prop="repayDate" label="还款日期">
@@ -64,7 +74,7 @@
             <el-table-column prop="isRepay" label="操作">
               <template slot-scope="scope">
                 <div class="button">
-                  <el-button type="success" @click="modifyData(scope.row.id)">修改</el-button>
+                  <el-button type="success" @click="modifyData(scope.row.id,scope.$index)">修改</el-button>
                   <el-button type="danger" @click="deleteData((scope.row.id))">删除</el-button>
                 </div>
               </template>
@@ -115,10 +125,10 @@ export default {
         repayDate: '',
         isRepay: ''
       }
-      this.tableData.unshift(this.list)
+      this.tableData.push(this.list)
     },
     saveData () {
-      addFinanceReport(this.tableData[0]).then((data) => {
+      addFinanceReport(this.tableData[this.tableData.length - 1]).then((data) => {
         this.$message({
           message: '恭喜你，新增成功',
           type: 'success'
@@ -126,9 +136,8 @@ export default {
         this.getFinanceReport()
       })
     },
-    modifyData (id) {
-      console.log(id)
-      modifyFinanceReport(id, this.tableData[0]).then((data) => {
+    modifyData (id, index) {
+      modifyFinanceReport(id, this.tableData[index]).then((data) => {
         this.$message({
           message: '恭喜你，修改成功',
           type: 'success'
@@ -169,7 +178,7 @@ export default {
 .financeReport {
   overflow: scroll;
   .tableWrap {
-    padding: 10px 100px 50px 100px;
+    padding: 10px;
   }
   .selectMonth {
     display: flex;
